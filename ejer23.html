@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Texto</title>
+</head>
+<body>
+    <!-- Campo de texto para que el usuario ingrese texto -->
+    <label for="texto">Texto:</label>
+    <input type="text" name="texto" id="texto">
+    <!-- Botón para insertar el texto ingresado en la tabla -->
+    <button onclick="addElement()">Insertar texto nuevo</button>
+    <br>
+    <!-- Tabla donde se mostrarán los textos ingresados -->
+    <table id="table" border="1">
+        <!-- La tabla se llenará dinámicamente con JavaScript -->
+         
+    </table>
+
+    <script>
+        // Array para almacenar los textos ingresados por el usuario
+        var elementos = [];
+        // Referencia al campo de texto
+        var texto = document.getElementById("texto");
+        // Referencia a la tabla
+        var table = document.getElementById("table");
+
+        // Función para agregar un nuevo elemento al array y actualizar la tabla
+        function addElement() {
+            // Validar que el campo de texto no esté vacío
+            if (texto.value.trim() === "") {
+                alert("Por favor, ingresa un texto válido.");
+                return;
+            }
+            // Agregar el valor del campo de texto al array
+            elementos.push(texto.value);
+            // Actualizar la tabla con el nuevo contenido
+            loadTable();
+        }
+
+        // Función para eliminar un elemento del array y actualizar la tabla
+        function deleteElement(index) {
+            // Eliminar el elemento en la posición 'index' del array
+            elementos.splice(index, 1);
+            // Actualizar la tabla
+            loadTable();
+        }
+
+        // Función para actualizar un elemento del array y actualizar la tabla
+        function update(index) {
+            // Validar que el campo de texto no esté vacío
+            if (texto.value.trim() === "") {
+                alert("Por favor, ingresa un texto válido.");
+                return;
+            }
+            // Reemplazar el elemento en la posición 'index' con el nuevo valor
+            elementos[index] = texto.value;
+            // Actualizar la tabla
+            loadTable();
+        }
+
+        // Función para copiar un elemento y colocarlo encima de sí mismo en el array
+        function copyUp(index) {
+            // Insertar una copia del elemento en la posición 'index' justo encima de sí mismo
+            elementos.splice(index, 0, elementos[index]);
+            // Actualizar la tabla
+            loadTable();
+        }
+
+        // Función para generar el contenido de la tabla basado en los elementos del array
+        function loadTable() {
+            let html = "";
+            // Recorrer cada elemento del array
+            for (let i = 0; i < elementos.length; i++) {
+                // Crear una fila para cada elemento
+                html += "<tr><td>" + elementos[i] + "</td>" +
+                        // Botón para copiar el elemento
+                        "<td><button onclick='copyUp(" + i + ")'>Copiar encima</button></td>" +
+                        // Botón para borrar el elemento
+                        "<td><button onclick='deleteElement(" + i + ")'>Borrar</button></td>" +
+                        // Botón para actualizar el elemento
+                        "<td><button onclick='update(" + i + ")'>Actualizar</button></td></tr>";
+            }
+            // Asignar el HTML generado al contenido de la tabla
+            table.innerHTML = html;
+        }
+    </script>
+</body>
+</html>

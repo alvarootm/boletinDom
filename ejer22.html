@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--Crea un documento HTML que contenga un cuadro de texto y dos botones de manera que permita añadir 
+    elementos de forma dinámica al DOM. Uno de los botones permitirá añadir elementos mediante insertAdjacentHTML
+    y otro botón mediante createElement.-->
+    <h2>Añadir Elementos Dinámicamente</h2>
+        <label for="nuevoElemento">Nuevo Elemento:</label>
+        <input type="text" id="nuevoElemento" placeholder="Ingrese un nuevo elemento">
+        <button onclick="modoInsertAdjacentHTML()">Añadir con insertAdjacentHTML</button>
+        <button onclick="modoCreateElement()">Añadir con createElement</button>
+        <ul id="contenedorElementos">
+            <strong>Lista:</strong>
+        </ul>
+</body>
+<script>
+    function modoInsertAdjacentHTML() {
+        var nuevoElemento = document.getElementById('nuevoElemento').value;
+        var contenedor = document.getElementById('contenedorElementos');
+        contenedor.insertAdjacentHTML('beforeend', `<li>${nuevoElemento}</li>`);
+    }
+    function modoCreateElement(){
+        var nuevoElemento = document.getElementById('nuevoElemento').value;
+        var contenedor = document.getElementById('contenedorElementos');
+        var parrafo = document.createElement('p');
+        parrafo.textContent = nuevoElemento;
+        contenedor.appendChild(parrafo);
+    }
+</script>
+</html>

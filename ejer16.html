@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--Crea un documento HTML que permita seleccionar el tamaño de fuente de los párrafos mediante un 
+        desplegable que contenga los tamaños: Small, Medium y Large.-->
+    <div id="textos">
+        <h2>Modificacion de tamaño</h2><br>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto sequi consectetur harum at consequatur vitae libero, soluta totam deserunt vero repellat, impedit voluptate omnis? Voluptatum adipisci minus nulla iste provident.</p><br>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto sequi consectetur harum at consequatur vitae libero, soluta totam deserunt vero repellat, impedit voluptate omnis? Voluptatum adipisci minus nulla iste provident.</p><br>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto sequi consectetur harum at consequatur vitae libero, soluta totam deserunt vero repellat, impedit voluptate omnis? Voluptatum adipisci minus nulla iste provident.</p>
+        <select name="size" id="size">
+            <option value="12px">Small</option>
+            <option value="16px">Medium</option>
+            <option value="20px">Large</option>
+        </select>
+        <button onclick="CambioTamaño()">Cambiar</button>
+    </div>
+</body>
+<script>
+    function CambioTamaño(){
+        let div = document.getElementById("textos");
+        let sizeSelection = document.getElementById("size");
+        div.style.fontSize = sizeSelection.value;
+    }
+</script>
+</html>
