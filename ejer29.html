@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Lanzar dado</h1>
+    <input type="button" onclick="lanzar()" value="Lanzar">
+    <input type="button" onclick="detenerLanzamientos()" value="Detener">
+
+    <script>
+        let valorDado=1;
+        let temporizador;
+        function Lanzar(){
+            temporizador = setInterval(generarAleatorio ,500)
+        }
+
+        function generarAleatorio(){
+            valorDado = Math.floor(Math.random() * 6) + 1;
+            console.log(valorDado);
+        }
+        //parar
+        function detenerLanzamientos(){
+            clearInterval(temporizador);
+        }
+        
+
+    </script>
+</body>
+</html>
