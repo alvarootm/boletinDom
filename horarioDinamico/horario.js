@@ -96,3 +96,52 @@ let horario = [
 ];
 
 // Escribe aquí tu código
+//funciones auxiliares ;
+function obtenerAsignatura(id) {
+    for (let i = 0; i < asignaturas.length; i++) {
+        if(asignaturas[i].id === id) return asignaturas[i];
+    }
+    return null;   
+    
+}
+
+let asignatura1 = obtenerAsignatura(6);
+
+console.log(asignatura1);
+
+function obtenerDiaSemana(id) {
+    for (let i = 0; i < dias.length; i++) {
+        if(dias[i].id === id) return dias[i];
+    }
+    return null;
+}
+
+let diaSemana1 = obtenerDiaSemana(1);
+
+console.log(diaSemana1);
+
+function obtenerTramoHorario(id) {
+    for (let i = 0; i < tramos.length; i++) {
+        if(tramos[i].id === id) return tramos[i];
+    
+}
+    return null;
+}
+
+let tramoHorario1 = obtenerTramoHorario(1);
+
+console.log(tramoHorario1);
+
+//creacion del horarario
+//fila dias de la semana
+
+let filaDias = document.createElement("tr");
+
+for (let i = 0; i < dias.length; i++) {
+    let celdaDia = document.createElement("td");
+    celdaDia.textContent = dias[i].nombre;
+    filaDias.appendChild(celdaDia);
+}
+
+document.getElementById("horario").appendChild(filaDias);
+
