@@ -132,16 +132,52 @@ let tramoHorario1 = obtenerTramoHorario(1);
 
 console.log(tramoHorario1);
 
-//creacion del horarario
-//fila dias de la semana
+//Al pulsar el boton vamos a hacer que se cree la primera fila con los dias de la semana y 
+//que estos se muestren por pantalla
 
-let filaDias = document.createElement("tr");
+document.getElementById('inputCrearHorario').addEventListener('click', function() {
+    // Obtener el elemento de la tabla
+    const table = document.getElementById('horario');
+    table.innerHTML="";
+    
+   //Crear fila de encabezado
+    const headerRow = document.createElement('tr');
+    
+    // Agregar celda vacía para franjas horarias
+    const emptyHeader = document.createElement('th');
+    headerRow.appendChild(emptyHeader);
+    
+    // Agregar encabezados de día
+    dias.forEach(dia => {
+        const dayHeader = document.createElement('th');
+        dayHeader.textContent = dia.nombre;
+        headerRow.appendChild(dayHeader);
+    });
+    
+    // Agregar fila de encabezado a la tabla
+    table.appendChild(headerRow);
 
-for (let i = 0; i < dias.length; i++) {
-    let celdaDia = document.createElement("td");
-    celdaDia.textContent = dias[i].nombre;
-    filaDias.appendChild(celdaDia);
-}
+    // Ahora agregamos los espacios de tiempo y las clases (lo implementaremos a continuación)
+    tramos.forEach(tramo => {
+        const row = document.createElement('tr');
+        
+        // Agregar celda de franja horaria
+        const timeCell = document.createElement('td');
+        timeCell.textContent = tramo.hora;
+        row.appendChild(timeCell);
+        
+        //Agrega celdas vacías para cada día
+        dias.forEach(dia => {
+            const cell = document.createElement('td');
+            
+        // Los completaremos con información de la clase más tarde.
+            cell.textContent = ''; 
+            row.appendChild(cell);
+        });
+        
+        table.appendChild(row);
 
-document.getElementById("horario").appendChild(filaDias);
-
+        //Agregar tramo
+        
+    });
+});
